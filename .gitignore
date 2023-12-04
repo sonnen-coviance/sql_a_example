@@ -1,2 +1,2 @@
-.mypy
-.pytest
+.mypy_cache
+.pytest_cache
