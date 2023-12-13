@@ -2,6 +2,7 @@ from flask import Flask, request
 
 from python_playground.models import A, B, db
 
+
 app = Flask(__name__)
 
 app.config[
