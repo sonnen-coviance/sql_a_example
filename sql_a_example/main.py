@@ -1,6 +1,6 @@
 from flask import Flask, request
 
-from python_playground.models import A, B, db
+from sql_a_example.models import A, B, db
 
 app = Flask(__name__)
 

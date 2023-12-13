@@ -1,10 +1,9 @@
 [tool.poetry]
-name = "python-playground"
+name = "sql_a_example"
 version = "0.1.0"
 description = ""
 authors = ["Stephen <sonnen@coviance.com>"]
 readme = "README.md"
-packages = [{ include = "python_playground" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"
