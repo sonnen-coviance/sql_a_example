@@ -1,7 +1,6 @@
 from flask import Flask, request
-from python_playground.models import db
-from python_playground.models import A
 
+from python_playground.models import A, B, db
 
 app = Flask(__name__)
 
@@ -23,6 +22,11 @@ def root():
 @app.route("/a", methods=["GET"])
 def get_as():
     return [a.to_dict() for a in db.session.query(A).all()]
+
+
+@app.route("/b", methods=["GET"])
+def get_bs():
+    return [b.to_dict() for b in db.session.query(B).all()]
 
 
 @app.route("/a", methods=["POST"])
@@ -51,7 +55,9 @@ def patch_a(id):
     a = db.session.query(A).filter(A.id == id).first()
     if a:
         for key, value in body.items():
-            if hasattr(a, key):
+            if key == "bs":
+                a.update_bs(value)
+            elif hasattr(a, key):
                 setattr(a, key, value)
         db.session.commit()
         return "success", 200
