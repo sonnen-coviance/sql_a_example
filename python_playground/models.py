@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, List
 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, ForeignKey, Integer, String
@@ -15,11 +15,8 @@ class A(Base):
     name = Column(String(50))
     bs = relationship("B", back_populates="a", cascade="all, delete-orphan")
 
-    def update_bs(self, b_data: Dict[str, str]):
-        bs = []
-        for b in b_data:
-            bs.append(B(a_id=self.id, **b))  # type: ignore
-        setattr(self, "bs", bs)
+    def update_bs(self, b_data: List[Dict[str, str]]):
+        self.bs = [B(a_id=self.id, **b) for b in b_data]
         db.session.commit()
 
     def to_dict(self):
