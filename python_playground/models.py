@@ -1,9 +1,8 @@
 from typing import Dict
-from sqlalchemy import Column, ForeignKey, Integer, String
-from sqlalchemy.orm import relationship, DeclarativeBase
 
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.orm import DeclarativeBase, relationship
 
 
 class Base(DeclarativeBase):
